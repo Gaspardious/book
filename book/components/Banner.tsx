@@ -8,7 +8,7 @@ type bannerProps = {
 
 const Banner = ({text}:bannerProps) => {
   return (
-    <div className='bg-orange-400 p-4 text-black font-extrabold text-center'>
+    <div className='bg-orange-400 p-4 text-black text-center'>
         <p>{text}</p>
     </div>
   )

@@ -12,20 +12,18 @@ const Footer = () => {
               </div>
           </section>
           
-          <hr className="border-white border-opacity-50 w-4/5 mx-auto mt-0 mb-10"/>
+          <hr className="border-orange-400 border-opacity-50 w-4/5 mx-auto mt-0 mb-10"/>
 
         <div className=" flex flex-wrap items-start mt-10 justify-center gap-5 sm:gap-40">
           <section>
-            <h2 className="text-white text-2xl font-bold mb-5">ABOUT</h2>
+            <h2 className="text-white text-2xl font-bold mb-5">Om mig</h2>
             <div className="flex flex-col gap-2 max-w-[200px] sm:max-w-none mx-auto sm:mx-0">
               <p className="text-white text-sm w-48 pb-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
-              <Link className="hover:hover:text-orange-400" href="/integritetspolicy">- Integrity</Link>
-              <Link className="hover:hover:text-orange-400" href="/cookiespolicy"> - Cookies</Link>
             </div>
           </section>
 
           <section>
-            <h2 className="text-white text-2xl font-bold mb-5">CONTACT</h2>
+            <h2 className="text-white text-2xl font-bold mb-5">Kontakt</h2>
             <div className="max-w-[200px] sm:max-w-none mx-auto sm:mx-0">
                 <p className="text-white text-sm"><strong>Adress:</strong> 123 45 Stockholm</p>
                 <p className="text-white text-sm"><strong>Telefon:</strong> +46 123 456 789</p>
@@ -37,13 +35,13 @@ const Footer = () => {
             <nav className="flex gap-2 justify-center sm:justify-start flex-col">
                 <Link className="hover:text-orange-400 active:text-[#4c6cd3]" href="/">HOME</Link>
                 <Link className="hover:text-orange-400" href="/about">ABOUT</Link>
-                <Link className="hover:text-orange-400" href="/shop">SHOP</Link>
+                <Link className="hover:text-orange-400" href="/books">BOOKS</Link>
                 <Link className="hover:text-orange-400" href="/contact">CONTACT</Link>
             </nav>
           </section>
         </div>
 
-        <hr className="border-white border-opacity-50 w-4/5 mx-auto mt-10 mb-10"/>
+        <hr className="border-orange-400 border-opacity-50 w-4/5 mx-auto mt-10 mb-10"/>
 
         <div className="flex flex-row items-center justify-center text-center gap-3">
           <section>
