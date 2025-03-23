@@ -14,11 +14,13 @@ const Hero = () => {
         className='object-cover h-[550px] w-full' 
     />
 
-    <div className="absolute inset-0 flex flex-col items-start justify-end p-3">
-      <h1 className="text-4xl font-bold text-white">Let&apos;s do some reading and writing - together 📚</h1>    
+    <div className="absolute inset-0 flex flex-col items-center justify-end pb-14">
+      <h1 className="text-6xl font-bold text-white">Välkommen!</h1>    
+      <p className="text-lg text-white">Här hittar du mina två icke-utgivna böcker.</p>
+      <p className="text-lg text-white">Klicka på knappen nedan för att se boklistan.</p>
      
      <Link href="/books">      
-        <button className='bg-orange-400 text-black px-4 py-2 rounded-md mt-4'>Books → </button>
+        <button className='bg-orange-400 text-black px-4 py-2 rounded-md mt-4'>Böcker → </button>
      </Link>
 
       </div>
