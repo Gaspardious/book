@@ -7,8 +7,8 @@ const Footer = () => {
          
          <section className="flex flex-col items-center justify-center m-8">
             <div className="flex gap-4 justify-center sm:justify-start">
-                  <Image src="/facebook.svg" alt="logo" width={30} height={30}  />
-                  <Image src="/instagram.svg" alt="logo" width={30} height={30}  />
+                  <Image src="/facebook.svg" alt="logo" width={40} height={40}  />
+                  <Image src="/instagram.svg" alt="logo" width={40} height={40}  />
               </div>
           </section>
           
@@ -45,9 +45,9 @@ const Footer = () => {
 
         <div className="flex flex-row items-center justify-center text-center gap-3">
           <section>
-            <p className="text-white text-sm">© 2025 Gaspar Invest AB </p>
             <p className="text-white text-sm">All rights reserved </p>
             <p className="text-white text-sm">Org.nr 123456789 </p>
+            <p className="text-white text-sm">© 2025 Gaspar Invest AB </p>
           </section>
         </div>
 

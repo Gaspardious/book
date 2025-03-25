@@ -10,12 +10,11 @@ const Page = () => {
 
     <h2 className='text-4xl font-bold text-center'>OM MIG</h2>
     <br />  
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur suscipit quibusdam repellat alias quis sit officia! Aspernatur vero eaque iusto officiis, ea tenetur consequuntur amet fugiat, hic quod, repellat eum?</p>
-    <br />  
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur suscipit quibusdam repellat alias quis sit officia! Aspernatur vero eaque iusto officiis, ea tenetur consequuntur amet fugiat, hic quod, repellat eum?</p>
-    <br />  
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur suscipit quibusdam repellat alias quis sit officia! Aspernatur vero eaque iusto officiis, ea tenetur consequuntur amet fugiat, hic quod, repellat eum?</p>
+    <p>Jag heter Dejan och skriver för att förstå världen – och kanske hjälpa andra att göra detsamma. <br /> <br /> Orden har alltid varit mitt sätt att utforska tankar, känslor och berättelser. Oavsett om det handlar om vardagens små ögonblick eller livets stora frågor, försöker jag hitta det som skaver, glöder eller inspirerar.
 
+När jag inte skriver läser jag gärna, vandrar i naturen eller försvinner in i en bra berättelse – på papper eller i huvudet. Jag tror på språkets kraft att beröra, förändra och förena, och det är precis det jag vill förmedla i mina texter.
+
+<br /> <br />Välkommen hit – jag hoppas du hittar något som stannar kvar en stund.</p>
   </section>
 
 

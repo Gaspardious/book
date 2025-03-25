@@ -15,7 +15,7 @@ const Header = () => {
       </Link>
     </div>
 
-        <nav className="flex justify-center p-3 border-b-2 border-t-2 uppercase space-x-4">
+        <nav className="flex font-bold justify-center p-3 border-b-2 border-t-2 border-orange-400 uppercase space-x-4">
         <Link href="/">Home</Link>
         <Link href="/books">Books</Link>
         <Link href="/about">About</Link>

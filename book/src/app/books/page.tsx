@@ -27,7 +27,7 @@ const Books = () => {
 
   <section className="relative text-gray-600 m-10 bg-white rounded-lg p-2 sm:w-[500px] flex flex-col items-start justify-center z-10">
     <Image
-      src="/gangster.jpg"
+      src="/gun.jpg"
       alt="Picture of the author"
       width={1000}
       height={1000}
