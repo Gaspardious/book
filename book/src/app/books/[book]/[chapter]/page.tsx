@@ -3,12 +3,9 @@ import { groq } from 'next-sanity'
 import { PortableText } from '@portabletext/react'
 import { notFound } from 'next/navigation'
 
-type Params = {
-  params: {
-    book: string
-    chapter: string
-  }
-  searchParams: { [key: string]: string | string[] | undefined }
+type ChapterPageProps = {
+  params: { book: string; chapter: string }
+  searchParams?: { [key: string]: string | string[] | undefined }
 }
 
 const chapterQuery = groq`
@@ -31,15 +28,18 @@ const nextChapterQuery = groq`
   }
 `
 
-export default async function ChapterPage({ params, searchParams }: Params) {
+export default async function ChapterPage({ params, searchParams }: ChapterPageProps) {
   const { book: bookSlug, chapter: chapterSlug } = params
+
   const currentPage = parseInt(
-    typeof searchParams.page === 'string' ? searchParams.page : '1',
+    typeof searchParams?.page === 'string' ? searchParams.page : '1',
     10
   )
+
   const blocksPerPage = 20
   const start = (currentPage - 1) * blocksPerPage
   const end = start + blocksPerPage
+
 
   // Fetch current chapter
   const chapter = await client.fetch(chapterQuery, {
