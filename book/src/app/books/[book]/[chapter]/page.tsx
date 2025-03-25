@@ -8,12 +8,9 @@ type Params = {
     book: string
     chapter: string
   }
-  searchParams: {
-    page?: string
-  }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
-// GROQ query to get current chapter
 const chapterQuery = groq`
   *[_type == "chapter" && slug.current == $chapterSlug && book->slug.current == $bookSlug][0]{
     title,
@@ -27,7 +24,6 @@ const chapterQuery = groq`
   }
 `
 
-// GROQ query to get the next chapter in the same book
 const nextChapterQuery = groq`
   *[_type == "chapter" && book->slug.current == $bookSlug && order == $nextOrder][0]{
     title,
@@ -37,7 +33,10 @@ const nextChapterQuery = groq`
 
 export default async function ChapterPage({ params, searchParams }: Params) {
   const { book: bookSlug, chapter: chapterSlug } = params
-  const currentPage = parseInt(searchParams.page || '1', 10)
+  const currentPage = parseInt(
+    typeof searchParams.page === 'string' ? searchParams.page : '1',
+    10
+  )
   const blocksPerPage = 20
   const start = (currentPage - 1) * blocksPerPage
   const end = start + blocksPerPage
