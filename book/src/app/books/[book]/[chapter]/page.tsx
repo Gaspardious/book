@@ -41,8 +41,6 @@ export default async function ChapterPage({
   const start = (currentPage - 1) * blocksPerPage
   const end = start + blocksPerPage
 
-
-  // Fetch current chapter
   const chapter = await client.fetch(chapterQuery, {
     bookSlug,
     chapterSlug,
@@ -53,13 +51,13 @@ export default async function ChapterPage({
   const totalPages = Math.ceil(chapter.body.length / blocksPerPage)
   const pageContent = chapter.body.slice(start, end)
 
-  // If on last page, try to fetch next chapter
-  const nextChapter = currentPage === totalPages
-    ? await client.fetch(nextChapterQuery, {
-        bookSlug,
-        nextOrder: chapter.order + 1,
-      })
-    : null
+  const nextChapter =
+    currentPage === totalPages
+      ? await client.fetch(nextChapterQuery, {
+          bookSlug,
+          nextOrder: chapter.order + 1,
+        })
+      : null
 
   return (
     <div className="max-w-3xl mx-auto py-12 px-4 pb-32">
@@ -80,7 +78,9 @@ export default async function ChapterPage({
           >
             ← Föregående sida
           </a>
-        ) : <div />}
+        ) : (
+          <div />
+        )}
 
         {/* Page info */}
         <div className="flex flex-col text-sm text-gray-500 text-center">
@@ -103,7 +103,9 @@ export default async function ChapterPage({
           >
             Nästa kapitel → ({nextChapter.title})
           </a>
-        ) : <div />}
+        ) : (
+          <div />
+        )}
       </div>
     </div>
   )
