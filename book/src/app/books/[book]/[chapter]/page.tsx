@@ -3,8 +3,11 @@ import { groq } from 'next-sanity'
 import { PortableText } from '@portabletext/react'
 import { notFound } from 'next/navigation'
 
+// This forces Next.js to treat params as a plain object, not a Promise.
+type PageParams = { book: string; chapter: string } & { then?: never }
+
 type PageProps = {
-  params: { book: string; chapter: string }
+  params: PageParams
   searchParams?: { [key: string]: string | string[] | undefined }
 }
 
