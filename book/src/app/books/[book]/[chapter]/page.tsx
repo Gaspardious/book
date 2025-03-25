@@ -3,11 +3,6 @@ import { groq } from 'next-sanity'
 import { PortableText } from '@portabletext/react'
 import { notFound } from 'next/navigation'
 
-type ChapterPageProps = {
-  params: { book: string; chapter: string }
-  searchParams?: { [key: string]: string | string[] | undefined }
-}
-
 const chapterQuery = groq`
   *[_type == "chapter" && slug.current == $chapterSlug && book->slug.current == $bookSlug][0]{
     title,
@@ -28,7 +23,13 @@ const nextChapterQuery = groq`
   }
 `
 
-export default async function ChapterPage({ params, searchParams }: ChapterPageProps) {
+export default async function ChapterPage({
+  params,
+  searchParams,
+}: {
+  params: { book: string; chapter: string }
+  searchParams?: { [key: string]: string | string[] | undefined }
+}) {
   const { book: bookSlug, chapter: chapterSlug } = params
 
   const currentPage = parseInt(
