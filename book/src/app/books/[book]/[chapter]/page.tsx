@@ -3,14 +3,6 @@ import { groq } from 'next-sanity'
 import { PortableText } from '@portabletext/react'
 import { notFound } from 'next/navigation'
 
-// This forces Next.js to treat params as a plain object, not a Promise.
-type PageParams = { book: string; chapter: string } & { then?: never }
-
-type PageProps = {
-  params: PageParams
-  searchParams?: { [key: string]: string | string[] | undefined }
-}
-
 const chapterQuery = groq`
   *[_type == "chapter" && slug.current == $chapterSlug && book->slug.current == $bookSlug][0]{
     title,
@@ -30,24 +22,23 @@ const nextChapterQuery = groq`
     "slug": slug.current
   }
 `
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function ChapterPage(props: any) {
+  // Locally extract and cast to the shape you expect
+  const { book: bookSlug, chapter: chapterSlug } = props.params as {
+    book: string
+    chapter: string
+  }
 
-export default async function ChapterPage({ params, searchParams }: PageProps) {
-  const { book: bookSlug, chapter: chapterSlug } = params
+  // Same for searchParams
+  const searchParams = props.searchParams as { page?: string }
 
-  const currentPage = parseInt(
-    typeof searchParams?.page === 'string' ? searchParams.page : '1',
-    10
-  )
-
+  const currentPage = parseInt(searchParams.page ?? '1', 10)
   const blocksPerPage = 20
   const start = (currentPage - 1) * blocksPerPage
   const end = start + blocksPerPage
 
-  const chapter = await client.fetch(chapterQuery, {
-    bookSlug,
-    chapterSlug,
-  })
-
+  const chapter = await client.fetch(chapterQuery, { bookSlug, chapterSlug })
   if (!chapter) return notFound()
 
   const totalPages = Math.ceil(chapter.body.length / blocksPerPage)
