@@ -20,7 +20,7 @@ const Books = () => {
     <p className='text-xs'><span className='font-bold'>GRENE:</span> Drama, Krig, Historia</p>
     <p className='text-xs'><span className='font-bold'>SIDOR:</span> 362</p>
     <p className='text-xs'><span className='font-bold'>HANDLING:</span> Lorem ipsum dolor sit amet...</p>
-    <Link href='/books/1'>
+    <Link href='/books/vladimirdenkov'>
       <button className='text-lg mt-5 bg-black px-4 py-2 rounded-md text-white'>Till boken →</button>
     </Link>
   </section>
@@ -38,7 +38,7 @@ const Books = () => {
     <p className='text-xs'><span className='font-bold'>GRENE:</span> Drama, Krig, Historia</p>
     <p className='text-xs'><span className='font-bold'>SIDOR:</span> 362</p>
     <p className='text-xs'><span className='font-bold'>HANDLING:</span> Lorem ipsum dolor sit amet...</p>
-    <Link href='/books/2'>
+    <Link href='/books/blodsbroder'>
       <button className='text-lg mt-5 bg-black px-4 py-2 rounded-md text-white'>Till boken →</button>
     </Link>
   </section>
