@@ -3,8 +3,8 @@ import { groq } from 'next-sanity'
 import { PortableText } from '@portabletext/react'
 import { notFound } from 'next/navigation'
 
-// Define route params as a plain object (not a Promise)
-type PageParams = { book: string; chapter: string } & { then?: never }
+// Allow params to be either a plain object or a Promise of that object.
+type PageParams = { book: string; chapter: string } | Promise<{ book: string; chapter: string }>
 
 type PageProps = {
   params: PageParams
@@ -32,7 +32,8 @@ const nextChapterQuery = groq`
 `
 
 export default async function ChapterPage({ params, searchParams }: PageProps) {
-  const { book: bookSlug, chapter: chapterSlug } = params
+  // Always await params in case they are a Promise.
+  const { book: bookSlug, chapter: chapterSlug } = await Promise.resolve(params)
 
   const currentPage = parseInt(
     typeof searchParams?.page === 'string' ? searchParams.page : '1',
@@ -67,7 +68,6 @@ export default async function ChapterPage({ params, searchParams }: PageProps) {
 
       {/* Pagination Footer */}
       <div className="flex justify-between items-center mt-10 fixed bottom-0 left-0 right-0 p-4 bg-black border-t-2 border-orange-400">
-        {/* Previous page */}
         {currentPage > 1 ? (
           <a
             href={`?page=${currentPage - 1}`}
@@ -79,13 +79,11 @@ export default async function ChapterPage({ params, searchParams }: PageProps) {
           <div />
         )}
 
-        {/* Page info */}
         <div className="flex flex-col text-sm text-gray-500 text-center">
           Sida {currentPage} av {totalPages}
           <span className="text-xs">{chapter.title}</span>
         </div>
 
-        {/* Next page or next chapter */}
         {currentPage < totalPages ? (
           <a
             href={`?page=${currentPage + 1}`}
