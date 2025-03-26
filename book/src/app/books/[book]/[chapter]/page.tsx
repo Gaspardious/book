@@ -3,7 +3,10 @@ import { groq } from 'next-sanity'
 import { PortableText } from '@portabletext/react'
 import { notFound } from 'next/navigation'
 
-type PageParams = { book: string; chapter: string } | Promise<{ book: string; chapter: string }>
+type PageParams = {
+  book: string
+  chapter: string
+}
 
 type PageProps = {
   params: PageParams
@@ -31,8 +34,8 @@ const nextChapterQuery = groq`
 `
 
 export default async function ChapterPage({ params, searchParams }: PageProps) {
-  const { book: bookSlug, chapter: chapterSlug } = await Promise.resolve(params)
-
+  const { book: bookSlug, chapter: chapterSlug } = params
+  
   const currentPage = parseInt(
     typeof searchParams?.page === 'string' ? searchParams.page : '1',
     10
