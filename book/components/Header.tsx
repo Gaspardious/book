@@ -16,10 +16,10 @@ const Header = () => {
     </div>
 
         <nav className="flex font-bold justify-center p-3 border-b-2 border-t-2 border-orange-400 uppercase space-x-4">
-        <Link href="/">Home</Link>
-        <Link href="/books">Books</Link>
-        <Link href="/about">About</Link>
-        <Link href="/contact">Contact</Link>
+        <Link href="/">Hem</Link>
+        <Link href="/books">Böcker</Link>
+        <Link href="/contact">Kontakt</Link>
+        <Link href="/about">Om mig</Link>
         </nav>
 
    </header>

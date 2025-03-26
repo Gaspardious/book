@@ -3,7 +3,6 @@ import { groq } from 'next-sanity'
 import { PortableText } from '@portabletext/react'
 import { notFound } from 'next/navigation'
 
-// Allow params to be either a plain object or a Promise of that object.
 type PageParams = { book: string; chapter: string } | Promise<{ book: string; chapter: string }>
 
 type PageProps = {
@@ -32,7 +31,6 @@ const nextChapterQuery = groq`
 `
 
 export default async function ChapterPage({ params, searchParams }: PageProps) {
-  // Always await params in case they are a Promise.
   const { book: bookSlug, chapter: chapterSlug } = await Promise.resolve(params)
 
   const currentPage = parseInt(
@@ -58,7 +56,7 @@ export default async function ChapterPage({ params, searchParams }: PageProps) {
       : null
 
   return (
-    <div className="max-w-3xl mx-auto py-12 px-4 pb-32">
+    <div className="max-w-3xl mx-auto py-12 px-4 pb-16">
       <h1 className="text-3xl font-bold mb-2">{chapter.title}</h1>
       <p className="text-gray-500 text-sm mb-6">
         Bok: <span className="italic">{chapter.book.title}</span>
@@ -68,19 +66,21 @@ export default async function ChapterPage({ params, searchParams }: PageProps) {
 
       {/* Pagination Footer */}
       <div className="flex justify-between items-center mt-10 fixed bottom-0 left-0 right-0 p-4 bg-black border-t-2 border-orange-400">
-        {currentPage > 1 ? (
-          <a
-            href={`?page=${currentPage - 1}`}
-            className="text-orange-400 hover:underline text-xs"
-          >
-            ← Föregående sida
-          </a>
-        ) : (
-          <div />
-        )}
+      {currentPage > 1 ? (
+        <a
+          href={`?page=${currentPage - 1}`}
+          className="text-orange-400 hover:underline text-xs"
+        >
+          ← Föregående sida
+        </a>
+      ) : (
+        <span className="text-orange-400 text-xs opacity-50 cursor-default">
+          ← Föregående sida
+        </span>
+      )}
 
         <div className="flex flex-col text-sm text-gray-500 text-center">
-          Sida {currentPage} av {totalPages}
+        <span className="text-lg font-bold"> Sida {currentPage} av {totalPages}</span>
           <span className="text-xs">{chapter.title}</span>
         </div>
 
@@ -96,7 +96,7 @@ export default async function ChapterPage({ params, searchParams }: PageProps) {
             href={`/books/${bookSlug}/${nextChapter.slug}`}
             className="text-orange-400 hover:underline text-xs"
           >
-            Nästa kapitel → ({nextChapter.title})
+            Nästa kapitel →
           </a>
         ) : (
           <div />
