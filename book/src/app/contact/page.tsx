@@ -26,8 +26,8 @@ const Contact = () => {
           >
             {/* Honeypot */}
             <input type="text" name="_honey" className="hidden" />
-            <input type="hidden" name="_captcha" defaultValue="false" />
-            <input type="hidden" name="_subject" defaultValue="Nytt kontaktmeddelande från portfolio" />
+            <input type="hidden" name="_captcha" defaultValue="true" />
+            <input type="hidden" name="_subject" defaultValue="Nytt kontaktmeddelande från Books!" />
             <input type="hidden" name="_next" value="" />
 
             <label htmlFor="name" className="text-xs text-white">Namn:</label>
@@ -42,7 +42,7 @@ const Contact = () => {
             <button type="submit" className="bg-orange-400 text-black p-2 rounded-md">Skicka</button>
           </form>
         ) : (
-          <p className="text-green-400 font-semibold mt-10 text-center w-full">
+          <p className="text-orange-400 font-semibold mt-10 text-center w-full">
             Tack! Ditt meddelande har skickats. 📬
           </p>
         )}
