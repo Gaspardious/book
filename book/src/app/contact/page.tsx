@@ -21,8 +21,9 @@ const contact = () => {
   method="POST"
   className="flex flex-col gap-4 w-full"
 >
-<input type="hidden" name="_subject" defaultValue="Nytt kontaktmeddelande från portfolio" />
-<input type="hidden" name="_captcha" defaultValue="false" />
+<input type="hidden" name="_subject" defaultValue="Nytt kontaktmeddelande från Books!" />
+<input type="hidden" name="_captcha" defaultValue="true" />
+<input type="text" name="_honey" className="hidden" />
 
   <label htmlFor="name" className="text-xs pt-10 text-white">Namn:</label>
   <input type="text" name="name" id="name" required className="border-2 border-gray-100 text-white rounded-md p-2" />
