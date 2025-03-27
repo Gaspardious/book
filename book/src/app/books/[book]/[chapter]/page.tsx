@@ -23,17 +23,17 @@ const nextChapterQuery = groq`
   }
 `
 
-export default async function ChapterPage({
-  params,
-  searchParams,
-}: {
-  params: Awaited<{ book: string; chapter: string }>
-  searchParams?: { [key: string]: string | string[] | undefined }
-}) {
-  const { book: bookSlug, chapter: chapterSlug } = params
-  
+interface ChapterPageProps {
+  params: Promise<{ book: string; chapter: string }>
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export default async function ChapterPage(props: ChapterPageProps) {
+  const { book: bookSlug, chapter: chapterSlug } = await props.params
+  const searchParams = await props.searchParams || {}
+
   const currentPage = parseInt(
-    typeof searchParams?.page === 'string' ? searchParams.page : '1',
+    typeof searchParams.page === 'string' ? searchParams.page : '1',
     10
   )
   const blocksPerPage = 20
@@ -65,21 +65,23 @@ export default async function ChapterPage({
 
       {/* Pagination Footer */}
       <div className="flex justify-between items-center mt-10 fixed bottom-0 left-0 right-0 p-4 bg-black border-t-2 border-orange-400">
-      {currentPage > 1 ? (
-        <a
-          href={`?page=${currentPage - 1}`}
-          className="text-orange-400 hover:underline text-xs"
-        >
-          ← Föregående sida
-        </a>
-      ) : (
-        <span className="text-orange-400 text-xs opacity-50 cursor-default">
-          ← Föregående sida
-        </span>
-      )}
+        {currentPage > 1 ? (
+          <a
+            href={`?page=${currentPage - 1}`}
+            className="text-orange-400 hover:underline text-xs"
+          >
+            ← Föregående sida
+          </a>
+        ) : (
+          <span className="text-orange-400 text-xs opacity-50 cursor-default">
+            ← Föregående sida
+          </span>
+        )}
 
         <div className="flex flex-col text-sm text-gray-500 text-center">
-        <span className="text-lg font-bold"> Sida {currentPage} av {totalPages}</span>
+          <span className="text-lg font-bold">
+            Sida {currentPage} av {totalPages}
+          </span>
           <span className="text-xs">{chapter.title}</span>
         </div>
 
