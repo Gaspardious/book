@@ -3,11 +3,6 @@ import { groq } from 'next-sanity'
 import Image from 'next/image'
 import Link from 'next/link'
 
-type Params = {
-  params: {
-    book: string
-  }
-}
 
 type Chapter = {
   title: string
@@ -46,7 +41,11 @@ const bookQuery = groq`
   }
 `
 
-export default async function BookPage({ params }: Params) {
+export default async function BookPage({
+  params,
+}: {
+  params: { book: string }
+}) {
   const book: Book | null = await client.fetch(bookQuery, { slug: params.book })
 
   if (!book) return <div>Book not found</div>

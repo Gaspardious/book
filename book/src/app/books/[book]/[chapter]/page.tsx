@@ -24,12 +24,13 @@ const nextChapterQuery = groq`
   }
 `
 
-interface ChapterPageProps {
+export default async function ChapterPage({
+  params,
+  searchParams,
+}: {
   params: { book: string; chapter: string }
   searchParams?: { [key: string]: string | string[] | undefined }
-}
-
-export default async function ChapterPage({ params, searchParams }: ChapterPageProps) {
+}) {
   const { book: bookSlug, chapter: chapterSlug } = params
   
   const currentPage = parseInt(
