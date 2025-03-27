@@ -45,7 +45,7 @@ export default async function BookPage({
 }: {
   params: Promise<{ book: string }>
 }) {
-  const { book } = await params // ✅ await params before using
+  const { book } = await params 
 
   const bookData: Book | null = await client.fetch(bookQuery, { slug: book })
 
@@ -68,7 +68,7 @@ export default async function BookPage({
       )}
 
       <h2 className="text-xs font-semibold mb-1">BESKRIVNING</h2>
-      <p className="text-lg bg-black/50 border-1 rounded border-orange-400 p-4 mb-8">
+      <p className="text-sm bg-black/50 border-1 rounded border-orange-400 p-4 mb-8">
         {bookData.description}
       </p>
 

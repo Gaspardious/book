@@ -4,17 +4,15 @@ import Link from 'next/link'
 
 const Hero = () => {
   return (
-    <div className='relative'>
-    <div className="absolute inset-0 bg-black opacity-70"></div>
-    <Image
-      src="/text.jpg"
-      alt="Picture of the author"
-      width={1000}
-      height={500}
-        className='object-cover h-[550px] w-full' 
-    />
+    <div className="relative min-h-[700px] w-full flex flex-col items-center justify-center p-10">
+      <div
+        className="absolute inset-0 bg-cover bg-center z-0"
+        style={{ backgroundImage: "url('/text.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+      </div>
 
-    <div className="absolute inset-0 flex flex-col items-center justify-end py-10">
+    <div className="absolute inset-0 flex flex-col items-center justify-center">
 
     <h1 className="text-6xl font-bold text-white">Välkommen!</h1>    
     <p className="text-lg text-white pb-10">Här hittar du mina två böcker.</p>
