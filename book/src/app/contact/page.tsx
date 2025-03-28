@@ -4,34 +4,43 @@ import React, { useState } from 'react';
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const response = await fetch('https://formsubmit.co/ajax/dejan.gaspar88@gmail.com', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+      body: formData,
+    });
+
+    if (response.ok) {
+      setSubmitted(true);
+    } else {
+      alert('Något gick fel. Försök igen.');
+    }
+  };
+
   return (
     <div className="relative min-h-[700px] w-full flex flex-col items-center justify-center p-10">
-      <div
-        className="absolute inset-0 bg-cover bg-center z-0"
-        style={{ backgroundImage: "url('/text.jpg')" }}
-      >
+      <div className="absolute inset-0 bg-cover bg-center z-0" style={{ backgroundImage: "url('/text.jpg')" }}>
         <div className="absolute inset-0 bg-black opacity-50"></div>
       </div>
 
       <section className="relative text-gray-600 m-10 bg-black/70 border border-orange-400 w-full rounded-lg p-10 sm:w-[500px] flex flex-col items-start justify-center z-10">
-
         <h2 className="text-4xl text-white font-bold text-center w-full">KONTAKT</h2>
 
         {!submitted ? (
-          <form
-            action="https://formsubmit.co/dejan.gaspar88@gmail.com"
-            method="POST"
-            onSubmit={() => setSubmitted(true)}
-            className="flex flex-col gap-4 w-full mt-5"
-          >
-            {/* Honeypot */}
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full mt-5">
             <input type="text" name="_honey" className="hidden" />
-            <input type="hidden" name="_captcha" defaultValue="true" />
-            <input type="hidden" name="_subject" defaultValue="Nytt kontaktmeddelande från Books!" />
-            <input type="hidden" name="_next" value="" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_subject" value="Nytt kontaktmeddelande från Books!" />
 
             <label htmlFor="name" className="text-xs text-white">Namn:</label>
-            <input type="text" name="name" id="name" required className="border-2 border-gray-10 text-white rounded-md p-2" />
+            <input type="text" name="name" id="name" required className="border-2 border-gray-100 text-white rounded-md p-2" />
 
             <label htmlFor="email" className="text-xs text-white">E-post:</label>
             <input type="email" name="email" id="email" required className="border-2 border-gray-100 rounded-md text-white p-2" />
