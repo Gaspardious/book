@@ -36,7 +36,7 @@ const Contact = () => {
         {!submitted ? (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full mt-5">
             <input type="text" name="_honey" className="hidden" />
-            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_captcha" value="true" />
             <input type="hidden" name="_subject" value="Nytt kontaktmeddelande från Books!" />
 
             <label htmlFor="name" className="text-xs text-white">Namn:</label>
