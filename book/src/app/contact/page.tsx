@@ -25,7 +25,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative min-h-[700px] w-full flex flex-col items-center justify-center p-10">
+    <div className="relative min-h-[750px] w-full flex flex-col items-center justify-center p-10">
       <div className="absolute inset-0 bg-cover bg-center z-0" style={{ backgroundImage: "url('/text.jpg')" }}>
         <div className="absolute inset-0 bg-black opacity-50"></div>
       </div>
@@ -36,7 +36,6 @@ const Contact = () => {
         {!submitted ? (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full mt-5">
             <input type="text" name="_honey" className="hidden" />
-            <input type="hidden" name="_captcha" value="true" />
             <input type="hidden" name="_subject" value="Nytt kontaktmeddelande från Books!" />
 
             <label htmlFor="name" className="text-xs text-white">Namn:</label>

@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Hero = () => {
   return (
-    <div className="relative min-h-[700px] w-full flex flex-col items-center justify-center p-10">
+    <div className="relative min-h-[750px] w-full flex flex-col items-center justify-center p-10">
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{ backgroundImage: "url('/text.jpg')" }}

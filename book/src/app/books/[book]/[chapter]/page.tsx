@@ -65,44 +65,51 @@ export default async function ChapterPage(props: ChapterPageProps) {
 
       {/* Pagination Footer */}
       <div className="flex justify-between items-center mt-10 fixed bottom-0 left-0 right-0 p-4 bg-black border-t-2 border-orange-400">
-        {currentPage > 1 ? (
-          <a
-            href={`?page=${currentPage - 1}`}
-            className="text-orange-400 hover:underline text-xs"
-          >
-            ← Föregående sida
-          </a>
-        ) : (
-          <span className="text-orange-400 text-xs opacity-50 cursor-default">
-            ← Föregående sida
-          </span>
-        )}
+  {/* Left: Previous */}
+  <div className="w-32 text-left">
+    {currentPage > 1 ? (
+      <a
+        href={`?page=${currentPage - 1}`}
+        className="text-orange-400 hover:underline text-xs"
+      >
+        ← Föregående sida
+      </a>
+    ) : (
+      <span className="text-orange-400 text-xs opacity-50 cursor-default">
+        ← Föregående sida
+      </span>
+    )}
+  </div>
 
-        <div className="flex flex-col text-sm text-gray-500 text-center">
-          <span className="text-lg font-bold">
-            Sida {currentPage} av {totalPages}
-          </span>
-          <span className="text-xs">{chapter.title}</span>
-        </div>
+  {/* Center: Page Info */}
+  <div className="flex flex-col text-sm text-gray-500 text-center">
+    <span className="text-lg font-bold">
+      Sida {currentPage} av {totalPages}
+    </span>
+    <span className="text-xs">{chapter.title}</span>
+  </div>
 
-        {currentPage < totalPages ? (
-          <a
-            href={`?page=${currentPage + 1}`}
-            className="text-orange-400 hover:underline text-xs"
-          >
-            Nästa sida →
-          </a>
-        ) : nextChapter ? (
-          <a
-            href={`/books/${bookSlug}/${nextChapter.slug}`}
-            className="text-orange-400 hover:underline text-xs"
-          >
-            Nästa kapitel →
-          </a>
-        ) : (
-          <div />
-        )}
-      </div>
+  {/* Right: Next */}
+  <div className="w-32 text-right">
+    {currentPage < totalPages ? (
+      <a
+        href={`?page=${currentPage + 1}`}
+        className="text-orange-400 hover:underline text-xs"
+      >
+        Nästa sida →
+      </a>
+    ) : nextChapter ? (
+      <a
+        href={`/books/${bookSlug}/${nextChapter.slug}`}
+        className="text-orange-400 hover:underline text-xs"
+      >
+        Nästa kapitel →
+      </a>
+    ) : (
+      <div />
+    )}
+  </div>
+</div>
     </div>
   )
 }
