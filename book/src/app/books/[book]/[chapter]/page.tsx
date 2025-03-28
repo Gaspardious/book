@@ -82,11 +82,10 @@ export default async function ChapterPage(props: ChapterPageProps) {
   </div>
 
   {/* Center: Page Info */}
-  <div className="flex flex-col text-sm text-gray-500 text-center">
-    <span className="text-lg font-bold">
+  <div className="flex flex-col text-sm text-gray-100 text-center">
+    <span className="text-xs font-bold">
       Sida {currentPage} av {totalPages}
     </span>
-    <span className="text-xs">{chapter.title}</span>
   </div>
 
   {/* Right: Next */}

@@ -25,12 +25,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative min-h-[750px] w-full flex flex-col items-center justify-center p-10">
+    <div className="relative min-h-[750px] w-full flex flex-col items-center justify-center p-5">
       <div className="absolute inset-0 bg-cover bg-center z-0" style={{ backgroundImage: "url('/text.jpg')" }}>
         <div className="absolute inset-0 bg-black opacity-50"></div>
       </div>
 
-      <section className="relative text-gray-600 m-10 bg-black/70 border border-orange-400 w-full rounded-lg p-10 sm:w-[500px] flex flex-col items-start justify-center z-10">
+      <section className="relative text-gray-600 m-10 bg-black/70 border border-orange-400 w-full rounded-lg p-6 sm:w-[500px] flex flex-col items-start justify-center z-10">
         <h2 className="text-4xl text-white font-bold text-center w-full">KONTAKT</h2>
 
         {!submitted ? (

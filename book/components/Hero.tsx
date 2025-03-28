@@ -14,7 +14,7 @@ const Hero = () => {
 
     <div className="absolute inset-0 flex flex-col items-center justify-center">
 
-    <h1 className="text-6xl font-bold text-white">Välkommen!</h1>    
+    <h1 className="text-5xl font-bold text-white">Välkommen!</h1>    
     <p className="text-lg text-white pb-10">Här hittar du mina två böcker.</p>
 
 <div className='flex gap-3 pb-10'>
